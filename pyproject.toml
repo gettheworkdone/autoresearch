@@ -1,0 +1,16 @@
+[project]
+name = "autoresearch"
+version = "0.4.0"
+description = "Single-user Telegram bot that drives Codex CLI autonomous research loops on an Ubuntu VPS."
+requires-python = ">=3.10"
+dependencies = [
+  "python-telegram-bot>=22.0,<23.0",
+  "python-dotenv>=1.0.1,<2.0.0",
+  "kaggle>=2.1.2,<3.0.0",
+]
+
+[project.scripts]
+autoresearch = "autoresearch.__main__:main"
+
+[tool.ruff]
+line-length = 100

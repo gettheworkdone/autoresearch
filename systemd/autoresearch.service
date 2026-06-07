@@ -1,0 +1,24 @@
+[Unit]
+Description=Autoresearch Telegram Codex Agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=researchbot
+Group=aragent
+UMask=0007
+WorkingDirectory=/opt/autoresearch
+EnvironmentFile=/opt/autoresearch/.env
+ExecStart=/opt/autoresearch/.venv/bin/python -m autoresearch
+Restart=always
+RestartSec=5
+
+# The service must sudo into codexrun to launch Codex.
+NoNewPrivileges=false
+
+# Keep service tmp isolated. Codex receives TMPDIR inside each task workspace.
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
